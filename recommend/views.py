@@ -45,7 +45,7 @@ def event_stream_generator(prompt):
     for i in range(duration):
         full_message = ''
         messages.append({"role": "user", "content": f"{i+1}일차 일정 추천해줘. 오전, 점심, 오후, 저녁으로 나누어 추천해줘. 표 형식으로 출력해줘"})
-        yield f"{i+1}일차:"
+        yield f"<h3>{i+1}일차:</h3>"
         for chunk in openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=messages,
