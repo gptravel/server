@@ -9,8 +9,9 @@ django = "*"
 openai = "*"
 django-cors-headers = "*"
 djangorestframework = "*"
-channels = "*"
-sseclient-py = "*"
+gunicorn = "*"
+whitenoise = "*"
+django-environ = "*"
 
 [dev-packages]
 
