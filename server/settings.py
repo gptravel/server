@@ -6,10 +6,10 @@ from django.core.exceptions import ImproperlyConfigured
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# 로컬에서 테스트할 때 이거 주석 해제하기
-dotenv_file = os.path.join(BASE_DIR, ".env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
+# # 로컬에서 테스트할 때 이거 주석 해제하기
+# dotenv_file = os.path.join(BASE_DIR, ".env")
+# if os.path.isfile(dotenv_file):
+#     dotenv.load_dotenv(dotenv_file)
 
 def get_env_variable(var_name):
   try:
@@ -54,16 +54,19 @@ ALLOWED_HOSTS = ['*']
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://client-seven-gray.vercel.app/",
 ]
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
     "http://127.0.0.1:8000",
+    "https://client-seven-gray.vercel.app/",
 ]
 
 # CSRF 관련 추가
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:8000',
+    "https://client-seven-gray.vercel.app/",
 ]
 
 ROOT_URLCONF = "server.urls"

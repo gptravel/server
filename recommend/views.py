@@ -1,15 +1,13 @@
 from rest_framework.viewsets import ModelViewSet
 from django.http import StreamingHttpResponse
 from rest_framework.decorators import api_view
-from dotenv import load_dotenv
 from .serializers import *
 from .models import *
 import os
 import openai
 
-load_dotenv()
 
-openai.api_key = os.getenv("OPENAI_KEY")
+openai.api_key = os.environ["OPENAI_KEY"]
 
 class RecommendViewSet(ModelViewSet):
     queryset = Recommend.objects.all()
