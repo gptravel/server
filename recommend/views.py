@@ -1,13 +1,11 @@
-from rest_framework import status
-from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
+from django.http import StreamingHttpResponse
 from rest_framework.decorators import api_view
+from dotenv import load_dotenv
 from .serializers import *
 from .models import *
-from dotenv import load_dotenv
 import os
 import openai
-from django.http import StreamingHttpResponse
 
 load_dotenv()
 
@@ -61,12 +59,11 @@ def event_stream_generator(prompt):
                 yield '\n\n'
         messages.append({"role": "assistant", "content": f"{full_message}"})
 
+
 @api_view(["POST"])
 def generate_answer(request):
-    prompt = request.data.get("state", "")
-    # response = Response(data=f"{generate_prompt(prompt)}", status=status.HTTP_200_OK)
-    
+    prompt = request.data.get("state", "")    
     response = StreamingHttpResponse(event_stream_generator(prompt), content_type='text/plain')
     response['Cache-Control'] = 'no-cache'
-    # response['Connection'] = 'keep-alive'
+
     return response
