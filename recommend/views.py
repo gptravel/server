@@ -19,8 +19,8 @@ def generate_prompt(prompt):
         "안녕 나는 여행 코스 추천 회사의 매니저야.\n"
         "너에게 여행 코스 추천을 도움 받으려고 해.\n"
         "내가 유저의 여행 관련 정보들을 제시해줄테니 여행 코스를 짜줘.\n"
-        "여기는 대한민국이고 언급이 굳이 없으면 해외 여행지를 추천해줘도 좋아.\n"
-        "경비는 인당 기준이고, 하루 당 예산이 아닌 총 여행 날짜동안 쓰는 예산이야\n"
+        "고객은 대한민국 국민이고, 언급이 굳이 없으면 해외 여행지를 추천해줘도 좋아.\n"
+        "경비는 인당 기준이고, 총 여행기간 동안 쓸 수 있는 경비야.\n"
         "비행기를 타야하는 거리라면 첫날과 마지막 날은 비행기 타는 시간도 고려해서 짜줘\n"
         "일자별로 물어볼게 답변은 장소에 대한 설명 없이 장소만 추천해줘\n\n"
 
@@ -40,7 +40,7 @@ def event_stream_generator(prompt):
     ]
     for i in range(duration):
         full_message = ''
-        messages.append({"role": "user", "content": f"{i+1}일차 일정 추천해줘. 오전, 점심, 오후, 저녁으로 나누어 추천해줘. 표 형식으로 출력해줘"})
+        messages.append({"role": "user", "content": f"{i+1}일차 일정 추천해줘. 오전, 점심, 오후, 저녁으로 나누어 추천해줘. 장소와 비용, 간략한 설명을 첨부해서 부탁해"})
         yield f"<h3>{i+1}일차:</h3>"
         for chunk in openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
