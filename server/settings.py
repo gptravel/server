@@ -52,15 +52,7 @@ MIDDLEWARE = [
 ALLOWED_HOSTS = ['*']
 
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://client-seven-gray.vercel.app/",
-]
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
-    "http://127.0.0.1:8000",
-    "https://client-seven-gray.vercel.app/",
-]
+CORS_ORIGIN_ALLOW_ALL = True
 
 # CSRF 관련 추가
 CSRF_TRUSTED_ORIGINS = [
